@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { GifsService } from '../../../gifs/services/gifs.service';
 
 @Component({
@@ -10,7 +10,11 @@ import { GifsService } from '../../../gifs/services/gifs.service';
 export class SidebarComponent {
   constructor(private giftsService: GifsService) {}
 
-  getTagHistory() {
+  get tags(): string[] {
     return this.giftsService.tagHistory;
+  }
+
+  searchTag(tag: string) {
+    this.giftsService.searchTag(tag);
   }
 }
